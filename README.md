@@ -26,3 +26,9 @@ rustc test.rs
 ./test > test2.rs
 rustc test2.rs
 ```
+
+# preview
+
+[![asciicast](https://asciinema.org/a/88XhtsMueWBUxjNEihZHtV8OR.svg)](https://asciinema.org/a/88XhtsMueWBUxjNEihZHtV8OR)
+
+
