@@ -13,5 +13,7 @@ s += "];"
 for c in content:
     if c == "@":
         print(s, end="")
+    elif c == "\n":
+        continue
     else:
         print(c, end="")
