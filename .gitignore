@@ -1,2 +1,6 @@
 Cargo.lock
 target/*
+test.rs
+test2.rs
+test
+test2
