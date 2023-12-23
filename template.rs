@@ -20,8 +20,8 @@ fn main() {
                     i+=1;
                 }
                 if i>col_len{
-                    let num_spaces = 20 - (i - col_len);
                     if col_num==0 {
+                        let num_spaces = 20 - (i - col_len);
                         for _ in 0..num_spaces{
                             print!(" ");
                         }
@@ -37,8 +37,8 @@ fn main() {
                     print!(",");
                     i+=1;
                     if i>=col_len{
-                        let num_spaces = 20;
                         if col_num==0 {
+                            let num_spaces = 20 - (i - col_len);
                             for _ in 0..num_spaces{
                                 print!(" ");
                             }
@@ -60,7 +60,13 @@ fn main() {
             if(c==59||c==123||c==125||c==32)&&i>=col_len{
                 if !is_inside_quotes{
                     if col_num==0{
-                        print!("          ");
+                        if col_num==0 {
+                            let num_spaces = 20 - (i - col_len);
+                            for _ in 0..num_spaces{
+                                print!(" ");
+                            }
+                            col_num+=1;
+                        }
                         col_num+=1;
                     }
                     else {
