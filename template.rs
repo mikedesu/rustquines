@@ -1,7 +1,8 @@
 fn main() {
     let v=@
     let mut i=0;
-    let x=20;
+    let col_len=20;
+    let mut col_num=0;
     let mut is_inside_quotes=false;
     for c in v{
         if c==10{
@@ -18,15 +19,35 @@ fn main() {
                 } else{
                     i+=1;
                 }
-                if i>x{
-                    print!("\n");
+                if i>col_len{
+                    let num_spaces = 20 - (i - col_len);
+                    if col_num==0 {
+                        for _ in 0..num_spaces{
+                            print!(" ");
+                        }
+                        col_num+=1;
+                    }
+                    else {
+                        println!();
+                        col_num=0;
+                    }
                     i=0;
                 }
                 if j<v.len()-1{
                     print!(",");
                     i+=1;
-                    if i>x{
-                        print!("\n");
+                    if i>=col_len{
+                        let num_spaces = 20;
+                        if col_num==0 {
+                            for _ in 0..num_spaces{
+                                print!(" ");
+                            }
+                            col_num+=1;
+                        }
+                        else {
+                            println!();
+                            col_num=0;
+                        }
                         i=0;
                     }
                 }
@@ -36,9 +57,16 @@ fn main() {
         else{
             print!("{}",char::from_u32(c).unwrap());
             i+=1;
-            if(c==59||c==123||c==125||c==32)&&i>x{
+            if(c==59||c==123||c==125||c==32)&&i>=col_len{
                 if !is_inside_quotes{
-                    println!();
+                    if col_num==0{
+                        print!("          ");
+                        col_num+=1;
+                    }
+                    else {
+                        println!();
+                        col_num=0;
+                    }
                     i=0;
                 }
             }
