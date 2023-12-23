@@ -13,9 +13,11 @@ fn main() {
     let mut is_inside_quotes=false;
     for c in v{
         // test comment
+        // any newlines present in the source will be skipped
         if c==10{
             continue;
         }
+        // handle the @ symbol
         else if c==64{
             print!("[");
             for j in 0..v.len(){
@@ -67,17 +69,16 @@ fn main() {
         else{
             print!("{}",char::from_u32(c).unwrap());
             i+=1;
-            if(c==59||c==123||c==125||c==32)&&i>=col_len{
+            // space ( ) ; { } 
+            if(c==32||c==40||c==41||c==43||c==59||c==123||c==125) && i>=col_len{
                 if !is_inside_quotes{
                     if col_num==0{
-                        if col_num==0 {
-                            //let num_spaces = 20 - (i - col_len);
-                            //for _ in 0..num_spaces{
-                            //    print!(" ");
-                            //}
-                            handle_spaces(20 - (i - col_len));
-                            col_num+=1;
-                        }
+                        //let num_spaces = 20 - (i - col_len);
+                        //for _ in 0..num_spaces{
+                        //    print!(" ");
+                        //}
+                        handle_spaces(20 - (i - col_len));
+                        col_num+=1;
                     }
                     else {
                         println!();
