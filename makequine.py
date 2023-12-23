@@ -10,8 +10,16 @@ def main():
     except:
         print("File not found")
         return
-    content=f.read()
+    lines=f.readlines()
     f.close()
+
+    content = ""
+
+    # strip comments
+    for line in lines:
+        if "//" in line:
+            continue
+        content += line
 
     content2 = ""
     just_hit_newline = False

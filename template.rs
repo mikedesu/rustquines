@@ -1,3 +1,10 @@
+fn handle_spaces(num_spaces : i32) {
+    for _ in 0..num_spaces{
+        print!(" ");
+    }
+}
+
+
 fn main() {
     let v=@
     let mut i=0;
@@ -5,6 +12,7 @@ fn main() {
     let mut col_num=0;
     let mut is_inside_quotes=false;
     for c in v{
+        // test comment
         if c==10{
             continue;
         }
@@ -21,10 +29,11 @@ fn main() {
                 }
                 if i>col_len{
                     if col_num==0 {
-                        let num_spaces = 20 - (i - col_len);
-                        for _ in 0..num_spaces{
-                            print!(" ");
-                        }
+                        //let num_spaces = 20 - (i - col_len);
+                        //for _ in 0..num_spaces{
+                        //    print!(" ");
+                        //}
+                        handle_spaces(20 - (i - col_len));
                         col_num+=1;
                     }
                     else {
@@ -38,10 +47,11 @@ fn main() {
                     i+=1;
                     if i>=col_len{
                         if col_num==0 {
-                            let num_spaces = 20 - (i - col_len);
-                            for _ in 0..num_spaces{
-                                print!(" ");
-                            }
+                            //let num_spaces = 20 - (i - col_len);
+                            //for _ in 0..num_spaces{
+                            //    print!(" ");
+                            //}
+                            handle_spaces(20 - (i - col_len));
                             col_num+=1;
                         }
                         else {
@@ -61,13 +71,13 @@ fn main() {
                 if !is_inside_quotes{
                     if col_num==0{
                         if col_num==0 {
-                            let num_spaces = 20 - (i - col_len);
-                            for _ in 0..num_spaces{
-                                print!(" ");
-                            }
+                            //let num_spaces = 20 - (i - col_len);
+                            //for _ in 0..num_spaces{
+                            //    print!(" ");
+                            //}
+                            handle_spaces(20 - (i - col_len));
                             col_num+=1;
                         }
-                        col_num+=1;
                     }
                     else {
                         println!();
