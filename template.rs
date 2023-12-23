@@ -1,3 +1,6 @@
+use rand::Rng;
+
+
 fn handle_spaces(num_spaces : i32) {
     for _ in 0..num_spaces{
         print!(" ");
@@ -8,10 +11,13 @@ fn handle_spaces(num_spaces : i32) {
 fn main() {
     let v=@
     let mut i=0;
-    let col_len=20;
+    // set col_len to a random number from 10 to 40
+    let col_len=rand::random::<i32>()%30+10;
     let mut col_num=0;
     let mut is_inside_quotes=false;
-    for c in v{
+    //for c in v{
+    for k in 0..v.len(){
+        let c = v[k];
         // test comment
         // any newlines present in the source will be skipped
         if c==10{
@@ -69,14 +75,24 @@ fn main() {
         else{
             print!("{}",char::from_u32(c).unwrap());
             i+=1;
+
+            // do lookahead
+            // check for open parenthesis or open curly
+            //if k+1<v.len() && (v[k+1]==40||v[k+1]==123) && i >= col_len {
+            //    if col_num==0{
+            //        handle_spaces(20 - (i - col_len));
+            //        col_num+=1;
+            //    } else {
+            //        println!();
+            //        col_num=0;
+            //    }
+            //    i = 0;
+            //}
             // space ( ) ; { } 
-            if(c==32||c==40||c==41||c==43||c==59||c==123||c==125) && i>=col_len{
+            //else if(c==32||c==40||c==41||c==59||c==123||c==125) && i>=col_len{
+            if(c==32||c==40||c==41||c==59||c==123||c==125) && i>=col_len{
                 if !is_inside_quotes{
                     if col_num==0{
-                        //let num_spaces = 20 - (i - col_len);
-                        //for _ in 0..num_spaces{
-                        //    print!(" ");
-                        //}
                         handle_spaces(20 - (i - col_len));
                         col_num+=1;
                     }
