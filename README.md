@@ -19,9 +19,12 @@ the current version randomly sizes the towers generated
 ./generate_quine.sh
 ```
 
+To invoke the loop to watch the code get compiled then printed out (for visualization), run `./do_loop.sh`.
+
+
 # preview
 
-[![asciicast](https://asciinema.org/a/88XhtsMueWBUxjNEihZHtV8OR.svg)](https://asciinema.org/a/88XhtsMueWBUxjNEihZHtV8OR)
+[![asciicast](https://asciinema.org/a/dYsggtAbOIo2ZLmXsmpz5ja5N.svg)](https://asciinema.org/a/dYsggtAbOIo2ZLmXsmpz5ja5N)
 
 # example output
 
