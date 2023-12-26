@@ -1,6 +1,6 @@
 #!/usr/bin/zsh
 
-./generate_quine.sh > src/main.rs
+./generate_quine.sh;
 
 while true; do 
     cat src/main.rs;  
