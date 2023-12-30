@@ -66,19 +66,31 @@ fn count_newlines(index:usize,v:&[u32])->i32{
 
 
 fn handle_array_spacing(i:&mut i32,current_row:&mut i32,current_column:&mut i32,max_columns:i32,newline_ct:i32){
-    const MAX_ROWS:i32=40;
+    const MAX_ROWS:i32=20;
     //if (*current_row < MAX_ROWS && *i>=COL_LEN)||(newline_ct<=MAX_ROWS&&*i>=COL_LEN){
-    if *current_column==1&&*i>=COL_LEN/4{
-        println!();
-        *current_row+=1;
-        *i=0;
-        *current_column=0;
+    if *current_row <= 20 {
+
+        if *i >= COL_LEN{
+            println!();
+            *current_row+=1;
+            *i=0;
+            *current_column=0;
+        }
+
     }
-    else if *current_row<MAX_ROWS&&*i>=COL_LEN{
-        println!();
-        *current_row+=1;
-        *i=0;
-        *current_column=0;
+
+    else if *current_row < 120 {
+        if *current_column==0&&*i>=COL_LEN/4{
+            handle_spaces(COL_LEN/2-(*i-(COL_LEN/4)));
+            *i=0;
+            *current_column+=1;
+        }
+        else if *current_column==1&&*i>=COL_LEN/4{
+            println!();
+            *current_row+=1;
+            *i=0;
+            *current_column=0;
+        }
     }
     else if *i>=COL_LEN{
         println!();
@@ -86,34 +98,11 @@ fn handle_array_spacing(i:&mut i32,current_row:&mut i32,current_column:&mut i32,
         *i=0;
         *current_column=0;
     }
-    //else if *current_row >= MAX_ROWS*2 && *i>=COL_LEN{
-    //    println!();
-    //    *current_row+=1;
-    //    *i=0;
-    //    *current_column=0;
-    //}
-    else if *current_column==0&&*i>=COL_LEN/4{
-        handle_spaces(COL_LEN/2-(*i-(COL_LEN/4)));
-        *i=0;
-        *current_column+=1;
-    }
-    else if *current_column==1&&*i>=COL_LEN/4{
-        println!();
-        *current_row+=1;
-        *current_column=0;
-        *i=0;
-    }
-    else if *i>=COL_LEN&&*current_row>=MAX_ROWS{
-        println!();
-        *current_row+=1;
-        *current_column=0;
-        *i=0;
-    }
-
 }
 
 
 fn print_array(i:&mut i32,current_row:&mut i32,v:&[u32],current_column:&mut i32,max_columns:i32,newline_ct:i32) {
+    handle_array_spacing(i,current_row,current_column,max_columns,newline_ct);       
     print!("[");
     *i+=1;
     handle_array_spacing(i,current_row,current_column,max_columns,newline_ct);       
@@ -144,7 +133,7 @@ fn print_array(i:&mut i32,current_row:&mut i32,v:&[u32],current_column:&mut i32,
 
 
 fn handle_special_char_spacing(i:&mut i32,current_row:&mut i32,current_column:&mut i32,max_columns:i32,is_inside_quotes:bool,newline_ct:i32){
-    const MAX_ROWS:i32=20;
+    const MAX_ROWS:i32=80;
     if *current_row<MAX_ROWS&&*i>=COL_LEN{
         if !is_inside_quotes{
             println!();
