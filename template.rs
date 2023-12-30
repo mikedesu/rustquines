@@ -1,4 +1,4 @@
-const COL_LEN : i32 = 200;
+const COL_LEN : i32 = 80;
 
 fn handle_spaces(num_spaces:i32){
     for _ in 0..num_spaces{
@@ -79,7 +79,7 @@ fn handle_array_spacing(i:&mut i32,current_row:&mut i32,current_column:&mut i32,
 
     }
 
-    else if *current_row < 120 {
+    else if *current_row < 300 {
         if *current_column==0&&*i>=COL_LEN/4{
             handle_spaces(COL_LEN/2-(*i-(COL_LEN/4)));
             *i=0;
