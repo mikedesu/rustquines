@@ -92,18 +92,18 @@ fn handle_array_spacing(i:&mut i32,current_row:&mut i32,current_column:&mut i32,
     //    *i=0;
     //    *current_column=0;
     //}
-    else if *current_column==0&&*i>=COL_LEN/4&&*current_row%2==0{
+    else if *current_column==0&&*i>=COL_LEN/4{
         handle_spaces(COL_LEN/2-(*i-(COL_LEN/4)));
         *i=0;
         *current_column+=1;
     }
-    else if *current_column==1&&*i>=COL_LEN/4&&*current_row%2==0{
+    else if *current_column==1&&*i>=COL_LEN/4{
         println!();
         *current_row+=1;
         *current_column=0;
         *i=0;
     }
-    else if *i>=COL_LEN&&*current_row%2==1{
+    else if *i>=COL_LEN&&*current_row>=MAX_ROWS{
         println!();
         *current_row+=1;
         *current_column=0;
