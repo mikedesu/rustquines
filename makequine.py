@@ -23,14 +23,25 @@ def main():
 
     content2 = ""
     just_hit_newline = False
+    just_hit_semicolon = False
     for c in content:
         if c == "\n":
             just_hit_newline = True
             content2 += c
+        elif c == ";":
+            just_hit_semicolon = True
+            content2 += c
         elif just_hit_newline and c == " ": # skip spaces after newline
+            continue
+        elif just_hit_newline and c == "\n":
+            continue
+        elif just_hit_semicolon and c == " ":
+            continue
+        elif just_hit_semicolon and c == "\n":
             continue
         else:
             just_hit_newline = False
+            just_hit_semicolon = False
             content2 += c
 
     content = content2
